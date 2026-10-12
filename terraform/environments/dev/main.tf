@@ -41,9 +41,9 @@ module "rds" {
   private_subnet_ids    = module.network.private_subnet_ids
   ecs_security_group_id = module.ecs.ecs_security_group_id
 
-  db_name     = "hotel_booking"
-  db_username = "dbadmin"
-  db_password = var.db_password
+  db_name        = "hotel_booking"
+  db_username    = "dbadmin"
+  db_password    = var.db_password
   instance_class = "db.t3.micro"
 
   tags = local.common_tags
