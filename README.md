@@ -328,5 +328,28 @@ Terraform validation checks configuration syntax and consistency; it does not pr
 
 
 
-\## 9
+\## 9. Assumptions and Limitations
+
+- The project is designed as a demonstration of DevOps practices for a hotel booking application.
+- Terraform configurations are separated into development and production environments to support environment-specific infrastructure management.
+- AWS infrastructure is defined using reusable Terraform modules for networking, Application Load Balancer (ALB), Amazon ECS, and Amazon RDS.
+- The ECS service is configured to run a containerized Nginx application as a sample workload.
+- PostgreSQL database schema creation, seed data loading, backup, and restore procedures are tested locally using Docker Compose.
+- AWS infrastructure deployment has not been performed as part of local validation.
+- AWS credentials, application secrets, and production database passwords must be configured securely before any deployment.
+- Resource availability, service quotas, and AWS costs may vary by region and account.
+
+\## 10. Future Improvements
+
+- Add automated application unit and integration tests to the CI/CD pipeline.
+- Integrate container image vulnerability scanning and Terraform security scanning.
+- Store Terraform state remotely in an encrypted Amazon S3 bucket with state locking configured appropriately.
+- Add centralized logging, monitoring, and alerting using Amazon CloudWatch, Prometheus, and Grafana.
+- Implement HTTPS for the Application Load Balancer using AWS Certificate Manager.
+- Add automated database backup retention and recovery testing.
+- Configure autoscaling policies for the ECS service based on CPU and memory utilization.
+- Introduce a deployment strategy such as rolling updates or blue-green deployments.
+- Add automated infrastructure cost estimation and resource tagging checks.
+- Extend the pipeline with approval gates for production changes.
+
 
