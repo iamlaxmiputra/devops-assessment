@@ -1,0 +1,24 @@
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: devops-assessment-postgres
+    environment:
+      POSTGRES_DB: hotel_booking
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: localdevpassword
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/migrations/001_create_tables.sql:/docker-entrypoint-initdb.d/01_create_tables.sql:ro
+      - ./database/seed/001_seed_data.sql:/docker-entrypoint-initdb.d/02_seed_data.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U appuser -d hotel_booking"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

@@ -1,0 +1,29 @@
+
+# Terraform working files
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+
+# Local secrets
+*.tfvars.secret
+*.auto.tfvars
+.env
+.env.*
+
+# Keep dependency lock files and example configuration tracked
+!**/.terraform.lock.hcl
+!*.example
+
+# Python
+__pycache__/
+*.pyc
+
+# Local database and temporary files
+*.log
+
+# Database backup files
+backups/*.dump
+backups/*.sql
